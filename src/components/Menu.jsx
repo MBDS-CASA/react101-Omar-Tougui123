@@ -1,4 +1,4 @@
-function Menu({ onSelect }) {
+function Menu({ onSelect, selected }) {
   const items = ['Notes', 'Etudiants', 'Matières', 'A propos']
 
   const handleClick = (item) => {
@@ -16,7 +16,9 @@ function Menu({ onSelect }) {
           <li key={item} className="menu__item">
             <button
               type="button"
-              className="menu__button"
+              className={`menu__button${
+                item === selected ? ' menu__button--active' : ''
+              }`}
               onClick={() => handleClick(item)}
             >
               {item}

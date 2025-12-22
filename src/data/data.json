@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "student": "Omar Tougui",
+    "matiere": "Mathematiques",
+    "note": 17,
+    "commentaire": "Tres bon travail"
+  },
+  {
+    "id": 2,
+    "student": "Sara El Amrani",
+    "matiere": "Physique",
+    "note": 15,
+    "commentaire": "Bon effort"
+  },
+  {
+    "id": 3,
+    "student": "Yassine Badaoui",
+    "matiere": "Informatique",
+    "note": 19,
+    "commentaire": "Excellent resultat"
+  }
+]

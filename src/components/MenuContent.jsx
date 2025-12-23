@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import data from '../data/data.json'
 import AproposPage from '../pages/AproposPage'
 import EtudiantsPage from '../pages/EtudiantsPage'
@@ -39,20 +40,45 @@ function normalizeData(rawData) {
 function MenuContent({ selected }) {
   const label = selected || 'Notes'
   const { notes, students, matieres } = normalizeData(data)
+  const [displayed, setDisplayed] = useState(label)
+  const [isFading, setIsFading] = useState(false)
+
+  useEffect(() => {
+    if (label === displayed) {
+      return
+    }
+
+    setIsFading(true)
+    const timeoutId = setTimeout(() => {
+      setDisplayed(label)
+      setIsFading(false)
+    }, 250)
+
+    return () => clearTimeout(timeoutId)
+  }, [label, displayed])
 
   let content = null
+  const activeLabel = displayed || 'Notes'
 
-  if (label === 'Etudiants') {
+  if (activeLabel === 'Etudiants') {
     content = <EtudiantsPage students={students} notes={notes} />
-  } else if (label === 'Matières') {
+  } else if (activeLabel === 'Matières') {
     content = <MatieresPage matieres={matieres} notes={notes} />
-  } else if (label === 'A propos') {
+  } else if (activeLabel === 'A propos') {
     content = <AproposPage />
   } else {
     content = <NotesPage notes={notes} />
   }
 
-  return <section className="menu-content">{content}</section>
+  return (
+    <section
+      className={`menu-content${
+        isFading ? ' menu-content--fade' : ' menu-content--show'
+      }`}
+    >
+      {content}
+    </section>
+  )
 }
 
 export default MenuContent

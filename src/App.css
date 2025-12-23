@@ -4,8 +4,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 60px 16px 12px;
-  gap: 16px;
+  padding: 72px 20px 24px;
+  gap: 20px;
 }
 
 .header {
@@ -88,18 +88,101 @@
 }
 
 .menu__button--active {
-  background: #e7f6ec;
+  background: #1f7a3d;
   border-color: #1f7a3d;
+  color: #ffffff;
   font-weight: 600;
 }
 
 .menu-content {
-  text-align: center;
+  text-align: left;
   width: 100%;
-  max-width: 720px;
+  max-width: 960px;
   background: #ffffff;
   border: 1px solid #cfe8d6;
   border-radius: 12px;
   padding: 14px 20px;
   box-shadow: 0 6px 14px rgba(31, 122, 61, 0.06);
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.menu-content--fade {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.menu-content--show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.table-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.table-toolbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.table-search {
+  min-width: 220px;
+}
+
+.table-container {
+  width: 100%;
+  border: 1px solid #d6e5dc;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(31, 122, 61, 0.06);
+  overflow-x: auto;
+}
+
+.menu-content .MuiTableHead-root .MuiTableCell-root {
+  background: #f1f6f3;
+  font-weight: 600;
+}
+
+.menu-content .MuiTableCell-root {
+  border-bottom: 1px solid #e6efe9;
+}
+
+.menu-content .MuiTableRow-root:hover .MuiTableCell-root {
+  background: #f8fbf9;
+}
+
+.table-pagination {
+  align-self: flex-end;
+}
+
+@media (max-width: 720px) {
+  .app {
+    padding: 80px 14px 20px;
+    gap: 14px;
+  }
+
+  .menu {
+    top: 10px;
+    left: 10px;
+  }
+
+  .menu__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .menu__button {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  .table-pagination {
+    align-self: stretch;
+  }
 }
